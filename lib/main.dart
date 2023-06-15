@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 import 'core/font_styles.dart';
 import 'core/theme_colors.dart';
+import 'features/rocket_launcher_list/presentation/widgets/image_carousel.dart';
 
 void main() {
   runApp(const MyApp());
@@ -39,28 +39,26 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
-            const SizedBox(
-              height: 24,
-            ),
+            const SizedBox(height: 24),
             Center(
               child: Text(
                 'SpaceX Launches',
                 style: appHeadersText,
               ),
             ),
-            const SizedBox(
-              height: 24,
+            const SizedBox(height: 24),
+            const ImageCarousel(),
+            const SizedBox(height: 24),
+            Row(
+              children: [
+                const SizedBox(width: 16),
+                Text(
+                  "Mission",
+                  style: appHeadersText,
+                ),
+              ],
             ),
-            const SizedBox(
-              height: 216,
-            ),
-            const SizedBox(
-              height: 24,
-            ),
-            Text(
-              "Mission",
-              style: appHeadersText,
-            ),
+            const SizedBox(height: 18),
           ],
         ),
       ),
