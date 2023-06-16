@@ -22,4 +22,21 @@ class RocketsLaunchesRepository {
       {"error": "Unexpected error while getting all upcoming launches!"}
     ];
   }
+
+  static const String _launchpadsURL =
+      "https://api.spacexdata.com/v4/launchpads";
+
+  Future<dynamic> dioGetLaunchpadNameByID(String launchpad) async {
+    String launchpadsWithIdURL = "$_launchpadsURL/$launchpad";
+    try {
+      final response = await _dio.get(launchpadsWithIdURL);
+
+      if (response.statusCode == 200) {
+        return response.data;
+      }
+    } on DioException {
+      return "";
+    }
+    return "";
+  }
 }

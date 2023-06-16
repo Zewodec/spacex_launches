@@ -57,7 +57,8 @@ class _ScheduleListState extends State<ScheduleList> {
                     String missionTime =
                         DateFormat('hh:mm a').format(rocketLaunch.dateUtc);
                     String missionTitle = rocketLaunch.name;
-                    String missionDescription = rocketLaunch.launchpad;
+                    String missionDescription =
+                        state.launchpadsForRocketsLaunches[index];
                     String youtubeID = rocketLaunch.links.youtubeId ?? "";
                     return Column(
                       children: [
