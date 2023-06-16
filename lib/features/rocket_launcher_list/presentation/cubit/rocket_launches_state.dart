@@ -14,6 +14,10 @@ class RocketLaunchesLoading extends RocketLaunchesState {
 }
 
 class RocketLaunchesLoaded extends RocketLaunchesState {
+  RocketLaunchesLoaded(this.rocketLaunches);
+
+  final List<RocketLaunchesModel> rocketLaunches;
+
   @override
   List<Object> get props => [];
 }

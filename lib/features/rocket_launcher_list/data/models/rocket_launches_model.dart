@@ -18,7 +18,7 @@ class RocketLaunchesModel {
   dynamic staticFireDateUnix;
   bool net;
   dynamic window;
-  Rocket rocket;
+  String rocket;
   dynamic success;
   List<dynamic> failures;
   dynamic details;
@@ -26,13 +26,13 @@ class RocketLaunchesModel {
   List<dynamic> ships;
   List<dynamic> capsules;
   List<String> payloads;
-  Launchpad launchpad;
+  String launchpad;
   int flightNumber;
   String name;
   DateTime dateUtc;
   int dateUnix;
   DateTime dateLocal;
-  DatePrecision datePrecision;
+  String datePrecision;
   bool upcoming;
   List<Core> cores;
   bool autoUpdate;
@@ -80,7 +80,7 @@ class RocketLaunchesModel {
         staticFireDateUnix: json["static_fire_date_unix"],
         net: json["net"],
         window: json["window"],
-        rocket: rocketValues.map[json["rocket"]]!,
+        rocket: json["rocket"],
         success: json["success"],
         failures: List<dynamic>.from(json["failures"].map((x) => x)),
         details: json["details"],
@@ -88,13 +88,13 @@ class RocketLaunchesModel {
         ships: List<dynamic>.from(json["ships"].map((x) => x)),
         capsules: List<dynamic>.from(json["capsules"].map((x) => x)),
         payloads: List<String>.from(json["payloads"].map((x) => x)),
-        launchpad: launchpadValues.map[json["launchpad"]]!,
+        launchpad: json["launchpad"],
         flightNumber: json["flight_number"],
         name: json["name"],
         dateUtc: DateTime.parse(json["date_utc"]),
         dateUnix: json["date_unix"],
         dateLocal: DateTime.parse(json["date_local"]),
-        datePrecision: datePrecisionValues.map[json["date_precision"]]!,
+        datePrecision: json["date_precision"],
         upcoming: json["upcoming"],
         cores: List<Core>.from(json["cores"].map((x) => Core.fromJson(x))),
         autoUpdate: json["auto_update"],
@@ -110,7 +110,7 @@ class RocketLaunchesModel {
         "static_fire_date_unix": staticFireDateUnix,
         "net": net,
         "window": window,
-        "rocket": rocketValues.reverse[rocket],
+        "rocket": rocket,
         "success": success,
         "failures": List<dynamic>.from(failures.map((x) => x)),
         "details": details,
@@ -118,13 +118,13 @@ class RocketLaunchesModel {
         "ships": List<dynamic>.from(ships.map((x) => x)),
         "capsules": List<dynamic>.from(capsules.map((x) => x)),
         "payloads": List<dynamic>.from(payloads.map((x) => x)),
-        "launchpad": launchpadValues.reverse[launchpad],
+        "launchpad": launchpad,
         "flight_number": flightNumber,
         "name": name,
         "date_utc": dateUtc.toIso8601String(),
         "date_unix": dateUnix,
         "date_local": dateLocal.toIso8601String(),
-        "date_precision": datePrecisionValues.reverse[datePrecision],
+        "date_precision": datePrecision,
         "upcoming": upcoming,
         "cores": List<dynamic>.from(cores.map((x) => x.toJson())),
         "auto_update": autoUpdate,
@@ -182,14 +182,6 @@ class Core {
       };
 }
 
-enum DatePrecision { HOUR, DAY, MONTH }
-
-final datePrecisionValues = EnumValues({
-  "day": DatePrecision.DAY,
-  "hour": DatePrecision.HOUR,
-  "month": DatePrecision.MONTH
-});
-
 class Fairings {
   dynamic reused;
   dynamic recoveryAttempt;
@@ -217,18 +209,6 @@ class Fairings {
         "ships": List<dynamic>.from(ships.map((x) => x)),
       };
 }
-
-enum Launchpad {
-  THE_5_E9_E4502_F509094188566_F88,
-  THE_5_E9_E4501_F509094_BA4566_F84,
-  THE_5_E9_E4502_F509092_B78566_F87
-}
-
-final launchpadValues = EnumValues({
-  "5e9e4501f509094ba4566f84": Launchpad.THE_5_E9_E4501_F509094_BA4566_F84,
-  "5e9e4502f509092b78566f87": Launchpad.THE_5_E9_E4502_F509092_B78566_F87,
-  "5e9e4502f509094188566f88": Launchpad.THE_5_E9_E4502_F509094188566_F88
-});
 
 class Links {
   Patch patch;
@@ -340,26 +320,4 @@ class Reddit {
         "media": media,
         "recovery": recovery,
       };
-}
-
-enum Rocket {
-  THE_5_E9_D0_D95_EDA69974_DB09_D1_ED,
-  THE_5_E9_D0_D95_EDA69973_A809_D1_EC
-}
-
-final rocketValues = EnumValues({
-  "5e9d0d95eda69973a809d1ec": Rocket.THE_5_E9_D0_D95_EDA69973_A809_D1_EC,
-  "5e9d0d95eda69974db09d1ed": Rocket.THE_5_E9_D0_D95_EDA69974_DB09_D1_ED
-});
-
-class EnumValues<T> {
-  Map<String, T> map;
-  late Map<T, String> reverseMap;
-
-  EnumValues(this.map);
-
-  Map<T, String> get reverse {
-    reverseMap = map.map((k, v) => MapEntry(v, k));
-    return reverseMap;
-  }
 }

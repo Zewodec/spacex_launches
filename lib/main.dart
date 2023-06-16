@@ -1,4 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:spacex_launches/features/rocket_launcher_list/data/repositories/rockets_launches_repository.dart';
+import 'package:spacex_launches/features/rocket_launcher_list/data/repositories/rockets_repository.dart';
+import 'package:spacex_launches/features/rocket_launcher_list/presentation/cubit/rocket_launches_cubit.dart';
+import 'package:spacex_launches/features/rocket_launcher_list/presentation/cubit/rockets_cubit.dart';
 import 'package:spacex_launches/features/rocket_launcher_list/presentation/widgets/schedule_list.dart';
 
 import 'core/text_styles.dart';
@@ -33,6 +38,16 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  late RocketsCubit rocketsCubit;
+  late RocketLaunchesCubit rocketLaunchesCubit;
+
+  @override
+  void initState() {
+    rocketsCubit = RocketsCubit(RocketsRepository());
+    rocketLaunchesCubit = RocketLaunchesCubit(RocketsLaunchesRepository());
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -48,7 +63,9 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             ),
             const SizedBox(height: 24),
-            const ImageCarousel(),
+            ImageCarousel(
+                rocketsCubit: rocketsCubit,
+                rocketsLaunchesCubit: rocketLaunchesCubit),
             const SizedBox(height: 24),
             Row(
               children: [
@@ -59,7 +76,10 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
               ],
             ),
-            const ScheduleList(),
+            BlocProvider(
+              create: (context) => rocketsCubit,
+              child: ScheduleList(rocketsLaunchesCubit: rocketLaunchesCubit),
+            ),
           ],
         ),
       ),
