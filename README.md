@@ -2,15 +2,9 @@
 
 SpaceX Launches - Test Task by Adam I.
 
-## Getting Started
+### Additional info
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- There were used API SpaceX REST API V4 (not V3)
+- I used upcoming missions not all missions.
+- On this moment there are no wikipedia link on upcoming missions - i use links on youtube.
+- BloC State Management was used.
