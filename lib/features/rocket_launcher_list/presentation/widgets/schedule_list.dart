@@ -18,8 +18,6 @@ class ScheduleList extends StatefulWidget {
 class _ScheduleListState extends State<ScheduleList> {
   @override
   void initState() {
-    // widget.rocketsLaunchesCubit.loadAllUpcomingLaunches();
-
     super.initState();
   }
 

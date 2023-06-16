@@ -1,7 +1,3 @@
-// To parse this JSON data, do
-//
-//     final rocketLaunchesModel = rocketLaunchesModelFromJson(jsonString);
-
 import 'dart:convert';
 
 List<RocketLaunchesModel> rocketLaunchesModelFromJson(String str) =>

@@ -1,7 +1,3 @@
-// To parse this JSON data, do
-//
-//     final rocketsModel = rocketsModelFromJson(jsonString);
-
 import 'dart:convert';
 
 List<RocketsModel> rocketsModelFromJson(String str) => List<RocketsModel>.from(
