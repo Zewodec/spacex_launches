@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:spacex_launches/features/rocket_launcher_list/presentation/widgets/schedule_list.dart';
 
-import 'core/font_styles.dart';
+import 'core/text_styles.dart';
 import 'core/theme_colors.dart';
 import 'features/rocket_launcher_list/presentation/widgets/image_carousel.dart';
 
@@ -59,7 +59,6 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
               ],
             ),
-            const SizedBox(height: 18),
             const ScheduleList(),
           ],
         ),

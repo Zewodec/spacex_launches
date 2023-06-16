@@ -14,8 +14,12 @@ class RocketsLoading extends RocketsState {
 }
 
 class RocketsLoaded extends RocketsState {
+  RocketsLoaded(this.rockets);
+
+  final List<RocketsModel> rockets;
+
   @override
-  List<Object> get props => [];
+  List<Object> get props => [rockets];
 }
 
 class RocketsLoadingError extends RocketsState {
