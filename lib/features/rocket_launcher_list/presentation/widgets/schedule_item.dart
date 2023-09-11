@@ -41,8 +41,12 @@ class ScheduleItem extends StatelessWidget {
                   height: 16,
                 ),
                 SizedBox(
-                    width: 105,
-                    child: Text(missionDate, style: missionDateText)),
+                    width: 110,
+                    child: AutoSizeText(
+                      missionDate,
+                      style: missionDateText,
+                      maxLines: 1,
+                    )),
                 Text(
                   missionTime,
                   style: missionTimeText,
